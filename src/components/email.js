@@ -26,7 +26,7 @@ class Email extends React.Component{
 
         setTimeout(() => {
             
-            if(event.target.value == ''){
+            if(event.target.value === ''){
                 this.setState({ msgError: 'Input an email.' });
                 this.setState({ color: 'border-red' });
                 this.props.OnSubmitChange('');
@@ -49,7 +49,7 @@ class Email extends React.Component{
 
     render(){
 
-        const color = this.state.color == 'border-green' ? 'border-green' : this.state.color == '' ? '' : 'border-red';
+        const color = this.state.color === 'border-green' ? 'border-green' : this.state.color === '' ? '' : 'border-red';
 
         return(
             <div className="form-field">

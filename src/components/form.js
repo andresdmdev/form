@@ -32,9 +32,9 @@ class Form extends React.Component{
     handleSubmit(e){
         e.preventDefault();
 
-        if (this.state.username == '' || this.state.email == '' || 
-            this.state.password == '' || this.state.confirmPasword !== this.state.password
-            || this.state.password == '' || this.state.confirmPasword == '' || 
+        if (this.state.username === '' || this.state.email === '' || 
+            this.state.password === '' || this.state.confirmPasword !== this.state.password
+            || this.state.password === '' || this.state.confirmPasword === '' || 
             !ValidPassword(this.state.password) || !ValidPassword(this.state.confirmPasword)){
 
             alert('Error, you have to complete all the fields');
@@ -46,14 +46,11 @@ class Form extends React.Component{
             Password: ${this.state.password}`;
 
             alert(SignUp);
-            console.log(`Username: ${this.state.username}`);
-            console.log(`Email: ${this.state.email}`);
-            console.log(`Password: ${this.state.password}`);
         }
     }
 
     handlerUserName(username){
-        this.setState({ username: username});
+        this.setState({ username: username });
     }
 
     handlerEmail(email){

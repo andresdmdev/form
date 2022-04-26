@@ -27,7 +27,7 @@ class UserName extends React.Component{
         const max = 25;
         setTimeout(() => {
             
-            if(event.target.value == ''){
+            if(event.target.value === ''){
                 this.setState({ msgError: 'Input an username.' });
                 this.setState({ color: 'border-red' });
                 this.props.OnSubmitChange('');
@@ -50,7 +50,7 @@ class UserName extends React.Component{
 
     render(){
 
-        const color = this.state.color == 'border-green' ? 'border-green' : this.state.color == '' ? '' : 'border-red';
+        const color = this.state.color === 'border-green' ? 'border-green' : this.state.color === '' ? '' : 'border-red';
 
         return(
             <div className="form-field">

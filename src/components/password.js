@@ -26,7 +26,7 @@ class Password extends React.Component{
 
         setTimeout(() => {
             
-            if(event.target.value == ''){
+            if(event.target.value === ''){
                 this.setState({ msgError: 'Input a password.' });
                 this.setState({ color: 'border-red' });
                 this.props.onPasswordConfirm('');    
@@ -50,7 +50,7 @@ class Password extends React.Component{
 
     render(){
 
-        const color = this.state.color == 'border-green' ? 'border-green' : this.state.color == '' ? '' : 'border-red';
+        const color = this.state.color === 'border-green' ? 'border-green' : this.state.color === '' ? '' : 'border-red';
 
         return(
             <div className="form-field">
