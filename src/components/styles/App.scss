@@ -1,0 +1,10 @@
+@import 'globalVars';
+
+.App_Form {
+  display: flex;
+  background-color: $color-ligth;
+  color: $color-dark;
+  width: 402px;
+  border-radius: $border-radius-big;
+  margin: 1rem auto;
+}
