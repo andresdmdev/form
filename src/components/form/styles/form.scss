@@ -1,0 +1,133 @@
+@import '../../styles/globalVars';
+
+
+.form{
+  width: 328px;
+  margin: 40px 37px;
+}
+
+.title{
+  text-align: center;
+  font-weight: 700;
+  font-size: $font-size-big;
+  margin: 0 0 40px;
+}
+
+.form_field{
+  width: 328px;
+  margin: 0px 0px 20px 0px;
+}
+
+.form_field_label{
+  margin: 0px 0px 0px 17px;
+  font-weight: 600;
+  font-size: $font-size-normal;
+  line-height: 24px;
+}
+
+.form_field_input{
+  position: relative;
+  width: 324px;
+  height: 34px;
+  font-family: $font-family;
+  background: $color-input;
+  color: $color-input-text;
+  border-radius: $border-radius-medium;
+  border: none;
+  font-weight: 500;
+  font-size: $font-size-normal;
+  line-height: 24px;
+  text-indent: 1.375rem;
+  margin: 5px 0 0 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.icon{
+  position: absolute;
+  box-sizing: border-box;
+  margin: 15px 0px 10px -34px;
+  width: 20px;
+  height: 15px;
+}
+
+.errorMsg{
+  color: $color-error;
+  width: 280px;
+  font-size: 0.75rem;
+  margin: 3px auto;
+}
+
+// Styles of Gender Component
+
+.fieldset{
+  border: none;
+}
+
+.fieldset_title{
+  font-weight: 600;
+  font-size: $font-size-normal;
+  line-height: 24px;
+}
+
+.fieldset_label{
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+
+.form_field_radio{
+  outline: none;
+  cursor: pointer;
+}
+
+// Occupation field
+
+.form_field_select{
+  margin-left: 1.5rem;
+  width: 55%;
+  border: none;
+  padding: 5px;
+  color: $color-input-text;
+  font-family: $font-family;
+  background-color: $color-input;
+  border-radius: $border-radius-small;
+  text-indent: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+// Address field
+
+.form_field_textarea{
+  display: block;
+  width: 280px;
+  height: 60px;
+  border: none;
+  background-color: $color-input;
+  border-radius: $border-radius-small;
+  text-indent: 5px;
+  font-family: $font-family;
+  color: $color-input-text;
+  padding: 10px 10px;
+  margin: 5px auto 47px auto;
+  outline: none;
+  cursor: pointer;
+}
+
+// Submit btn
+
+.btn{
+  width: 169px;
+  height: 42px;
+  border: none;
+  border-radius: $border-radius-normal;
+  background-color: $color-dark;
+  color: $color-ligth;
+  font-weight: 700;
+  font-size: $font-size-middle;
+  line-height: 27px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  outline: none;
+}
