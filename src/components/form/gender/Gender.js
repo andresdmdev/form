@@ -1,41 +1,43 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
 
-export default function Gender({ gender, handleGender }){
+export default function Gender(){
+
+  const { gender } = useSelector(state => state.userSlice)
+
+  const dispatch = useDispatch()
   
+  function handleGender(event){
+
+    const { name, value } = event.target
+
+    dispatch(setUser({ name, value }))
+  }
+
+  const genders = ['Male', 'Female', 'Other']
+
+  const allGender = genders.map(elem => (
+    <div key={elem} className='form_field_fieldset_radio'>
+        <input 
+          type="radio" 
+          checked={gender === elem} 
+          value={elem}
+          name="gender"
+          id={elem}
+          onChange={handleGender}
+          className="form_field_fieldset_radio-check" 
+        />
+        <i></i>
+        <label htmlFor={elem} className="form_field_fieldset_label">{elem}</label>
+    </div>
+  ))
+
   return (
     <div className="form_field">
-      <fieldset className="fieldset">
-        <legend className="fieldset_title">Gender</legend>
-        <input 
-          type="radio" 
-          checked={gender === 'male'} 
-          value="male"
-          name="gender"
-          id="male"
-          onChange={handleGender}
-          className="form_field_radio" 
-        />
-        <label htmlFor="male" className="fieldset_label">Male</label>
-        <input 
-          type="radio" 
-          checked={gender === 'female'} 
-          value="female"
-          name="gender"
-          id="female"
-          onChange={handleGender}
-          className="form_field_radio" 
-        />
-        <label htmlFor="female" className="fieldset_label">Female</label>
-        <input 
-          type="radio" 
-          checked={gender === 'other'} 
-          value="other"
-          name="gender"
-          id="other"
-          onChange={handleGender}
-          className="form_field_radio" 
-        />
-        <label htmlFor="other" className="fieldset_label">Other</label>
+      <fieldset className="form_field_fieldset">
+        <legend className="form_field_fieldset_title">Gender</legend>
+        {allGender}
       </fieldset>
     </div>
   )
