@@ -1,7 +1,7 @@
 {
-  "homepage": "https://andres-webdev.github.io/simple-form",
+  "homepage": "https://andres-webdev.github.io/form",
   "name": "new-form",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "1.8.3",
