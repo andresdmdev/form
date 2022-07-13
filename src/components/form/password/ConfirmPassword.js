@@ -1,34 +1,43 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
 import CheckIcon from "../helpers/CheckIcon";
 import ShowError from "../helpers/Showmsg";
 
-export default function ConfirmPassword(props){
+export default function ConfirmPassword(){
+
+    const { password, confirmPassword } = useSelector(state => state.userSlice)
+
+    const dispatch = useDispatch()
     
-    const [details, setDetails] = useState({ confirmPassword: '', msgError: '', color: '' })
+    const [confirmPasswordDetails, setconfirmPasswordDetails] = useState({ 
+        input: confirmPassword, 
+        msgError: ''
+    })
 
     function handleChange(event){
 
-        const { value } = event.target
+        const { name, value } = event.target
             
-        if(props.password !== value){
+        if(password !== value){
             
-            setDetails(prevState => ({
+            setconfirmPasswordDetails(prevState => ({
                 ...prevState,
-                confirmPassword: value,
-                msgError: 'Confirmation password is not the same that the password inputed before.',
-                color: 'border-red'
+                input: value,
+                msgError: 'Confirmation password is not the same that the password inputed before.'
             }))
+
+            dispatch(setUser({ name, value: '' }))
 
         } else {
 
-            setDetails(prevState => ({
+            setconfirmPasswordDetails(prevState => ({
                 ...prevState,
-                confirmPassword: value,
-                msgError: '',
-                color: 'border-green'
+                input: value,
+                msgError: ''
             }))
 
-            props.handleConfirmPassword(event)
+            dispatch(setUser({ name, value }))
         }
     }
 
@@ -40,18 +49,18 @@ export default function ConfirmPassword(props){
                     type='password'
                     id='confirmPassword'
                     name="confirmPassword"
-                    value={details.confirmPassword}
+                    value={confirmPasswordDetails.input}
                     onChange={handleChange}
                     className='form_field_input'
                 />
                 { 
-                    details.msgError ? 
+                    confirmPasswordDetails.msgError || password !== confirmPassword ? 
                     <CheckIcon check={false} /> : 
-                    details.confirmPassword.length > 0 && <CheckIcon check={true} /> 
+                    confirmPasswordDetails.input.length > 0 && <CheckIcon check={true} />
                 }
             </div>
             {   
-                details.msgError && <ShowError msgError={details.msgError} />
+                confirmPasswordDetails.msgError && <ShowError msgError={confirmPasswordDetails.msgError} />
             }
         </div>
     )

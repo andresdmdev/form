@@ -1,10 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
 import CheckIcon from "../helpers/CheckIcon";
 import ShowError from "../helpers/Showmsg";
 
-export default function Password(props){
-    
-    const [details, setDetails] = useState({ password: '', msgError: '', color: '' })
+export default function Password(){
+
+    const { password } = useSelector(state => state.userSlice)
+
+    const dispatch = useDispatch()
+
+    const [passwordDetails, setPasswordDetails] = useState({ 
+        input: password, 
+        msgError: '' 
+    })
 
     function validPassword(password){
         const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})");    
@@ -13,47 +22,47 @@ export default function Password(props){
 
     function handleChange(event){
 
-        const { value } = event.target
+        const { name, value } = event.target
 
         const matches = value.match(/\s+/g);
             
         if(value === ''){
 
-            setDetails(prevState => ({
+            setPasswordDetails(prevState => ({
                 ...prevState,
-                password: value,
-                msgError: 'Input a password.',
-                color: 'border-red'
+                input: value,
+                msgError: 'Input a password.'
             }))
 
         } else if(matches){
             
-            setDetails(prevState => ({
+            setPasswordDetails(prevState => ({
                 ...prevState,
-                password: value,
-                msgError: 'Password cannot have blank spaces.',
-                color: 'border-red'
+                input: value,
+                msgError: 'Password cannot have blank spaces.'
             }))
+
+            dispatch(setUser({ name, value: '' }))
 
         } else if(!validPassword(value)){
 
-            setDetails(prevState => ({
+            setPasswordDetails(prevState => ({
                 ...prevState,
-                password: value,
-                msgError: 'Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)',
-                color: 'border-red'
+                input: value,
+                msgError: 'Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)'
             }))
+
+            dispatch(setUser({ name, value: '' }))
 
         } else {
 
-            setDetails(prevState => ({
+            setPasswordDetails(prevState => ({
                 ...prevState,
-                password: value,
-                msgError: '',
-                color: 'border-green'
+                input: value,
+                msgError: ''
             }))
 
-            props.handlePassword(event)
+            dispatch(setUser({ name, value }))
         }
     }
 
@@ -65,18 +74,18 @@ export default function Password(props){
                     type='password'
                     id='password'
                     name="password"
-                    value={details.password}
+                    value={passwordDetails.input}
                     onChange={handleChange}
                     className='form_field_input'
                 />
                 { 
-                    details.msgError ? 
+                    passwordDetails.msgError ? 
                     <CheckIcon check={false} /> : 
-                    details.password.length > 0 && <CheckIcon check={true} /> 
+                    passwordDetails.input.length > 0 && <CheckIcon check={true} /> 
                 }
             </div>
             {   
-                details.msgError && <ShowError msgError={details.msgError} />
+                passwordDetails.msgError && <ShowError msgError={passwordDetails.msgError} />
             }
         </div>
     )
