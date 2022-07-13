@@ -1,0 +1,255 @@
+@import '../../styles/sass/globalVars';
+
+
+.form{
+  width: 100%;
+  margin: 2rem;
+}
+
+.form_title{
+  text-align: center;
+  font-weight: 700;
+  font-size: $font-size-big;
+  margin: 0 0 40px;
+}
+
+.form_field{
+  width: 100%;
+  margin: 0px 0px 20px 0px;
+}
+
+.form_field_label{
+  margin: 0px 0px 0px 17px;
+  font-weight: 600;
+  font-size: $font-size-normal;
+  line-height: 24px;
+}
+
+.form_field_input{
+  position: relative;
+  width: 324px;
+  height: 34px;
+  font-family: $font-family;
+  background: $color-input;
+  color: $color-input-text;
+  border-radius: $border-radius-medium;
+  border: none;
+  font-weight: 500;
+  font-size: $font-size-normal;
+  line-height: 24px;
+  text-indent: 1.375rem;
+  margin: 5px 0 0 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.form_field_icon{
+  position: absolute;
+  box-sizing: border-box;
+  margin: 15px 0px 10px -34px;
+  width: 20px;
+  height: 15px;
+}
+
+.form_field_errorMsg{
+  color: $color-error;
+  width: 280px;
+  font-size: 0.75rem;
+  margin: 3px auto;
+}
+
+// Styles of Gender Component
+
+.form_field_fieldset{
+  border: none;
+  display: flex;
+}
+
+.form_field_fieldset_title{
+  font-weight: 600;
+  font-size: $font-size-normal;
+  line-height: 24px;
+}
+
+.form_field_fieldset_label{
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+
+.form_field_fieldset_radio{
+	display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.form_field_fieldset_radio-check{
+  outline: none;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+}
+
+// Occupation field
+
+.form_field select::-ms-expand {
+  display: none;
+}
+
+.form_field select:hover {
+  background-color: $color-background;
+  color: $color-ligth;
+  font-weight: 700;
+}
+
+.form_field_select{
+  margin-left: 1.5rem;
+  position: relative;
+  width: 55%;
+  border: none;
+  padding: 8px;
+  color: $color-input-text;
+  font-family: $font-family;
+  background-color: $color-input;
+  border-radius: $border-radius-small;
+  text-indent: 10px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.form_field_select_arrow{
+  position: absolute;
+  margin: -25px 0px 0px 290px;
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-left:3px solid $color-dark;
+  border-bottom:3px solid $color-dark;
+  border-radius: 2px;
+  transform: rotate(-50deg); /* Giramos el cuadrado */
+  transition: all 0.25s ease;
+}
+
+// Address field
+
+.form_field_textarea{
+  display: block;
+  width: 280px;
+  resize: vertical;
+  min-height: 70px;
+  max-height: 150px;
+  border: none;
+  background-color: $color-input;
+  border-radius: $border-radius-small;
+  text-indent: 5px;
+  font-family: $font-family;
+  color: $color-input-text;
+  padding: 20px 10px;
+  margin: 5px auto auto auto;
+  outline: none;
+  cursor: pointer;
+  overflow-y: hidden;
+}
+
+.form_field_counter{
+  text-align: right;
+  margin: 5px 20px 47px auto;
+  color: $color-dark;
+  font-weight: 500;
+  font-size: $font-size-small;
+}
+
+// Submit btn
+
+.form_btn{
+  width: 169px;
+  height: 42px;
+  border: none;
+  border-radius: $border-radius-normal;
+  background-color: $color-dark;
+  color: $color-ligth;
+  font-weight: 700;
+  font-size: $font-size-middle;
+  font-family: $font-family;
+  line-height: 27px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  outline: none;
+}
+
+.form_btn:disabled{
+  opacity: 65%;
+  cursor: not-allowed;
+}
+
+.form_btn:hover{
+  background-color: $color-ligth;
+  color: $color-dark;
+  border: 2px solid $color-dark;
+}
+
+// Screen 300p - 600p Movile
+
+@media screen and (max-width: 950px) and (min-width: 200px) {
+  .form{
+    width: 328px - 82px;
+    margin: 2rem;
+  }
+  
+  .form_field{
+    margin: 0px 0px 10px 0px;
+  }
+  
+  .form_field_label{
+    margin: 0px 0px 0px 13px;
+    line-height: 20px;
+  }
+  
+  .form_field_input{
+    width: 100%;
+    line-height: 20px;
+    text-indent: 1.2rem;
+  }
+
+  .form_field_icon{
+    margin: -26px 0px 10px 220px;
+  }
+
+  .form_field_errorMsg{
+    width: 100%;
+    font-size: 0.75rem;
+    margin: 3px 10px;
+  }
+
+  // Styles of Gender Component
+
+  .form_field_fieldset_label{
+    margin-right: 0.6rem;
+  }
+
+  // Occupation field
+
+  .form_field_select{
+    margin: 0 2rem 0 0.65rem;
+    width: 95%;
+  }
+
+  .form_field_select_arrow{
+    margin: -25px 0px 0px 220px;
+  }
+
+  // Address field
+
+  .form_field_textarea{
+    max-width: 96%;
+  }
+
+  .form_field_counter{
+    margin: 5px 0px 47px auto;
+    font-size: 10px;
+  }
+}

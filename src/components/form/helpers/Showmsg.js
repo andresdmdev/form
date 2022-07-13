@@ -3,7 +3,7 @@ import React from "react";
 function ShowError({ msgError }){
 
     return(
-        <small>{msgError}</small>
+        <p className="form_field_errorMsg">{msgError}</p>
     );
 }
 
