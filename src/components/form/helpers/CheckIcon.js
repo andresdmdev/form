@@ -4,13 +4,11 @@ import doneIcon from "../../../img/done.svg"
 
 export default function CheckIcon({ check }){
 
-  const icon = check ? doneIcon : errorIcon
-
   return(
       <img 
-        src={icon} 
+        src={check ? doneIcon : errorIcon} 
         alt='Icon' 
-        className="icon" 
+        className="form_field_icon" 
       />
   );
 }
