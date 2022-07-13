@@ -1,0 +1,95 @@
+.card_small {
+  position: relative;
+  background-color: #1F2B56;
+  width: 372px;
+  max-height: 400px;
+  border-radius: 60px;
+  transition: 500ms;
+  margin: 1rem auto;
+  padding: 0;
+}
+
+.card_small_info {
+  margin: 70px 40px 40px 40px;
+  padding: 0;
+}
+
+.card_small_greeting {
+  margin: 0 0 7px 0;
+  padding: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #EBEBEB;
+  line-height: 48px;
+}
+
+.card_small_name {
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #EBEBEB;
+  line-height: 48px;
+}
+
+.card_small_msg {
+  margin: 0 0 50px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #EBEBEB;
+  line-height: 24px;
+}
+
+.card_small_btn {
+  position: absolute;
+  bottom: 40px;
+  left: 102px;
+  right: 102px;
+  width: 169px;
+  height: 42px;
+  border: none;
+  border-radius: 30px;
+  background-color: #EBEBEB;
+  color: #1F2B56;
+  font-weight: 700;
+  font-size: 1.125rem;
+  font-family: "Poppins", sans-serif;
+  line-height: 27px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  outline: none;
+}
+
+.card_small_btn:hover {
+  background-color: #1F2B56;
+  color: #F5F5F5;
+  border: 2px solid #F5F5F5;
+}
+
+@media screen and (max-width: 950px) and (min-width: 200px) {
+  .card_small {
+    width: 320px;
+  }
+  .card_small_info {
+    margin: 50px 40px 40px 40px;
+  }
+  .card_small_greeting {
+    line-height: 40px;
+  }
+  .card_small_name {
+    font-size: 1.65rem;
+    line-height: 40px;
+  }
+  .card_small_msg {
+    font-size: 0.8rem;
+    line-height: 20px;
+    margin-bottom: 100px;
+  }
+  .card_small_btn {
+    left: 75px;
+    right: 75px;
+  }
+}
+
+/*# sourceMappingURL=smallCard.css.map */

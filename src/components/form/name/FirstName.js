@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
 import CheckIcon from "../helpers/CheckIcon";
 import ShowError from "../helpers/Showmsg";
 
+export default function FirstName(){
 
-export default function FirstName(props){
+    const { firstName } = useSelector(state => state.userSlice)
+    const dispatch = useDispatch()
 
-    const [details, setDetails] = useState({ firstName: '', msgError: '', color: '' })
+    const [firstNameDetails, setFirstNameDetails] = useState({ 
+        input: firstName, 
+        msgError: '' 
+    })
 
     function validUser(length, min = 3, max = 25){
         return length < min || length > max ? true : false;
@@ -13,46 +20,47 @@ export default function FirstName(props){
 
     function handleChange(event){
 
-        const { value } = event.target
+        const { name, value } = event.target
 
         const matches = value.match(/\s+/g);
             
         if(value === ''){
 
-            setDetails(prevState => ({
+            setFirstNameDetails(prevState => ({
                 ...prevState,
-                firstName: value,
-                msgError: 'Input your first name.',    
-                color: 'border-red'
+                input: value,
+                msgError: 'Input your first name.'   
             }))
 
         } else if(matches){
 
-            setDetails(prevState => ({
+            setFirstNameDetails(prevState => ({
                 ...prevState,
-                firstName: value,
-                msgError: 'First name cannot have blank spaces.',    
-                color: 'border-red'
+                input: value,
+                msgError: 'First name cannot have blank spaces.'
             }))
+
+            dispatch(setUser({ name, value: '' }))
 
         } else if(validUser(value.length)){
 
-            setDetails(prevState => ({
+            setFirstNameDetails(prevState => ({
                 ...prevState,
-                firstName: value,
-                msgError: `First name must be between 3 and 25 characters.`,    
-                color: 'border-red'
+                input: value,
+                msgError: `First name must be between 3 and 25 characters.`
             }))
+
+            dispatch(setUser({ name, value: '' }))
 
         } else{
 
-            setDetails(prevState => ({
+            setFirstNameDetails(prevState => ({
                 ...prevState,
-                firstName: value,
-                msgError: '',    
-                color: 'border-green'
+                input: value,
+                msgError: ''
             }))
-            props.handleName(event);
+            
+            dispatch(setUser({ name, value }))
         }
     }
 
@@ -64,18 +72,18 @@ export default function FirstName(props){
                     type='text'
                     id='firstName'
                     name="firstName"
-                    value={details.firstName}
+                    value={firstNameDetails.input}
                     onChange={handleChange}
                     className='form_field_input'
                 />
                 { 
-                    details.msgError ? 
+                    firstNameDetails.msgError ? 
                     <CheckIcon check={false} /> : 
-                    details.firstName.length > 0 && <CheckIcon check={true} /> 
+                    firstNameDetails.input.length > 0 && <CheckIcon check={true} /> 
                 }
             </div>
             {   
-                details.msgError && <ShowError msgError={details.msgError} />
+                firstNameDetails.msgError && <ShowError msgError={firstNameDetails.msgError} />
             }
         </div>
     )

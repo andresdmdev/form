@@ -1,9 +1,9 @@
 .form {
-  width: 328px;
-  margin: 40px 37px;
+  width: 100%;
+  margin: 2rem;
 }
 
-.title {
+.form_title {
   text-align: center;
   font-weight: 700;
   font-size: 2rem;
@@ -11,7 +11,7 @@
 }
 
 .form_field {
-  width: 328px;
+  width: 100%;
   margin: 0px 0px 20px 0px;
 }
 
@@ -40,7 +40,7 @@
   outline: none;
 }
 
-.icon {
+.form_field_icon {
   position: absolute;
   box-sizing: border-box;
   margin: 15px 0px 10px -34px;
@@ -48,38 +48,58 @@
   height: 15px;
 }
 
-.errorMsg {
+.form_field_errorMsg {
   color: #EE5E5E;
   width: 280px;
   font-size: 0.75rem;
   margin: 3px auto;
 }
 
-.fieldset {
+.form_field_fieldset {
   border: none;
+  display: flex;
 }
 
-.fieldset_title {
+.form_field_fieldset_title {
   font-weight: 600;
   font-size: 1rem;
   line-height: 24px;
 }
 
-.fieldset_label {
+.form_field_fieldset_label {
   margin-right: 1.5rem;
   cursor: pointer;
 }
 
-.form_field_radio {
+.form_field_fieldset_radio {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.form_field_fieldset_radio-check {
   outline: none;
   cursor: pointer;
+  height: 15px;
+  width: 15px;
+}
+
+.form_field select::-ms-expand {
+  display: none;
+}
+
+.form_field select:hover {
+  background-color: rgba(123, 155, 224, 0.7960784314);
+  color: #F5F5F5;
+  font-weight: 700;
 }
 
 .form_field_select {
   margin-left: 1.5rem;
+  position: relative;
   width: 55%;
   border: none;
-  padding: 5px;
+  padding: 8px;
   color: rgba(31, 43, 86, 0.89);
   font-family: "Poppins", sans-serif;
   background-color: #EBEBEB;
@@ -87,25 +107,53 @@
   text-indent: 10px;
   outline: none;
   cursor: pointer;
+  transition: all 0.25s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form_field_select_arrow {
+  position: absolute;
+  margin: -25px 0px 0px 290px;
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-left: 3px solid #1F2B56;
+  border-bottom: 3px solid #1F2B56;
+  border-radius: 2px;
+  transform: rotate(-50deg); /* Giramos el cuadrado */
+  transition: all 0.25s ease;
 }
 
 .form_field_textarea {
   display: block;
   width: 280px;
-  height: 60px;
+  resize: vertical;
+  min-height: 70px;
+  max-height: 150px;
   border: none;
   background-color: #EBEBEB;
   border-radius: 10px;
   text-indent: 5px;
   font-family: "Poppins", sans-serif;
   color: rgba(31, 43, 86, 0.89);
-  padding: 10px 10px;
-  margin: 5px auto 47px auto;
+  padding: 20px 10px;
+  margin: 5px auto auto auto;
   outline: none;
   cursor: pointer;
+  overflow-y: hidden;
 }
 
-.btn {
+.form_field_counter {
+  text-align: right;
+  margin: 5px 20px 47px auto;
+  color: #1F2B56;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.form_btn {
   width: 169px;
   height: 42px;
   border: none;
@@ -114,11 +162,67 @@
   color: #F5F5F5;
   font-weight: 700;
   font-size: 1.125rem;
+  font-family: "Poppins", sans-serif;
   line-height: 27px;
   display: block;
   margin: 0 auto;
   cursor: pointer;
   outline: none;
+}
+
+.form_btn:disabled {
+  opacity: 65%;
+  cursor: not-allowed;
+}
+
+.form_btn:hover {
+  background-color: #F5F5F5;
+  color: #1F2B56;
+  border: 2px solid #1F2B56;
+}
+
+@media screen and (max-width: 950px) and (min-width: 200px) {
+  .form {
+    width: 246px;
+    margin: 2rem;
+  }
+  .form_field {
+    margin: 0px 0px 10px 0px;
+  }
+  .form_field_label {
+    margin: 0px 0px 0px 13px;
+    line-height: 20px;
+  }
+  .form_field_input {
+    width: 100%;
+    line-height: 20px;
+    text-indent: 1.2rem;
+  }
+  .form_field_icon {
+    margin: -26px 0px 10px 220px;
+  }
+  .form_field_errorMsg {
+    width: 100%;
+    font-size: 0.75rem;
+    margin: 3px 10px;
+  }
+  .form_field_fieldset_label {
+    margin-right: 0.6rem;
+  }
+  .form_field_select {
+    margin: 0 2rem 0 0.65rem;
+    width: 95%;
+  }
+  .form_field_select_arrow {
+    margin: -25px 0px 0px 220px;
+  }
+  .form_field_textarea {
+    max-width: 96%;
+  }
+  .form_field_counter {
+    margin: 5px 0px 47px auto;
+    font-size: 10px;
+  }
 }
 
 /*# sourceMappingURL=form.css.map */

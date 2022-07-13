@@ -1,11 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
 import CheckIcon from "../helpers/CheckIcon";
 import ShowError from "../helpers/Showmsg";
 
+export default function LastName(){
 
-export default function LastName(props){
+    const { lastName } = useSelector(state => state.userSlice)
 
-    const [details, setDetails] = useState({ lastName: '', msgError: '', color: '' })
+    const dispatch = useDispatch()
+
+    const [lastNameDetails, setLastNameDetails] = useState({ 
+        input: lastName, 
+        msgError: '' 
+    })
 
     function validUser(length, min = 3, max = 25){
         return length < min || length > max ? true : false;
@@ -13,46 +21,47 @@ export default function LastName(props){
 
     function handleChange(event){
 
-        const { value } = event.target
+        const { name, value } = event.target
 
         const matches = value.match(/\s+/g);
             
         if(value === ''){
 
-            setDetails(prevState => ({
+            setLastNameDetails(prevState => ({
                 ...prevState,
-                lastName: value,
-                msgError: 'Input your last name.',    
-                color: 'border-red'
+                input: value,
+                msgError: 'Input your last name.'
             }))
 
         } else if(matches){
 
-            setDetails(prevState => ({
+            setLastNameDetails(prevState => ({
                 ...prevState,
-                lastName: value,
-                msgError: 'Last name cannot have blank spaces.',    
-                color: 'border-red'
+                input: value,
+                msgError: 'Last name cannot have blank spaces.'
             }))
+
+            dispatch(setUser({ name, value: '' }))
 
         } else if(validUser(value.length)){
 
-            setDetails(prevState => ({
+            setLastNameDetails(prevState => ({
                 ...prevState,
-                lastName: value,
-                msgError: `Last name must be between 3 and 25 characters.`,    
-                color: 'border-red'
+                input: value,
+                msgError: `Last name must be between 3 and 25 characters.`
             }))
+
+            dispatch(setUser({ name, value: '' }))
 
         } else{
 
-            setDetails(prevState => ({
+            setLastNameDetails(prevState => ({
                 ...prevState,
-                lastName: value,
-                msgError: '',    
-                color: 'border-green'
+                input: value,
+                msgError: ''
             }))
-            props.handleName(event);
+            
+            dispatch(setUser({ name, value }))
         }
     }
 
@@ -64,18 +73,18 @@ export default function LastName(props){
                     type='text'
                     id='lastName'
                     name="lastName"
-                    value={details.lastName}
+                    value={lastNameDetails.input}
                     onChange={handleChange}
                     className='form_field_input'
                 />
                 { 
-                    details.msgError ? 
+                    lastNameDetails.msgError ? 
                     <CheckIcon check={false} /> : 
-                    details.lastName.length > 0 && <CheckIcon check={true} /> 
+                    lastNameDetails.input.length > 0 && <CheckIcon check={true} /> 
                 }
             </div>
             {   
-                details.msgError && <ShowError msgError={details.msgError} />
+                lastNameDetails.msgError && <ShowError msgError={lastNameDetails.msgError} />
             }
         </div>
     )

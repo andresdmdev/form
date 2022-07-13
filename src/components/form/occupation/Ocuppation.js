@@ -1,6 +1,33 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
 
-export default function Occupation({ occupation, handleOccupation }){
+export default function Occupation(){
+
+  const { occupation } = useSelector(state => state.userSlice)
+
+  const dispatch = useDispatch()
+
+  function handleOccupation(event){
+    const { name, value } = event.target
+
+    dispatch(setUser({ name, value }))
+  }
+
+  const occupations = [
+    'Student', 
+    'Programmer', 
+    'Entrepreneur', 
+    'Doctor', 
+    'Lawyer', 
+    'Engineer', 
+    'Athlete', 
+    'Other'
+  ]
+
+  const allOccupations = occupations.map(elem => (
+    <option value={elem} key={elem}>{elem}</option>
+  ))
 
   return (
     <div className="form_field">
@@ -13,15 +40,9 @@ export default function Occupation({ occupation, handleOccupation }){
         className="form_field_select"
       >
         <option value="">--Choose--</option>
-        <option value="student">Student</option>
-        <option value="programmer">Programmer</option>
-        <option value="entrepreneur">Entrepreneur</option>
-        <option value="doctor">Doctor</option>
-        <option value="lawyer">Lawyer</option>
-        <option value="engineer">Engineer</option>
-        <option value="athlete">Athlete</option>
-        <option value="other">Other</option>
+        {allOccupations}
       </select>
+      <i className="form_field_select_arrow"></i>
     </div>
   )
 }
