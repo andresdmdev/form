@@ -1,10 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
 import CheckIcon from "../helpers/CheckIcon";
 import ShowError from "../helpers/Showmsg";
 
-export default function Email(props) {
+export default function Email() {
 
-    const [details, setDetails] = useState({ email: '', msgError: '', color: '' })
+    const { email } = useSelector(state => state.userSlice)
+
+    const dispatch = useDispatch()
+
+    const [emailDetails, setEmailDetails] = useState({ 
+        input: email, 
+        msgError: '' 
+    })
 
     function validEmail(email){
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -13,48 +22,48 @@ export default function Email(props) {
 
     function handleChange(event){
 
-        const { value } = event.target
+        const { name, value } = event.target
 
         const matches = value.match(/\s+/g);
 
             
         if(value === ''){
 
-            setDetails(prevState => ({
+            setEmailDetails(prevState => ({
                 ...prevState,
-                email: value,
-                msgError: 'Input an email.',
-                color: 'border-red'
+                input: value,
+                msgError: 'Input an email.'
             }))
 
         } else if(matches){
 
-            setDetails(prevState => ({
+            setEmailDetails(prevState => ({
                 ...prevState,
-                email: value,
-                msgError: 'Email cannot have blank spaces.',
-                color: 'border-red'
+                input: value,
+                msgError: 'Email cannot have blank spaces.'
             }))
+
+            dispatch(setUser({ name, value: '' }))
 
         } else if(!validEmail(value)){
 
-            setDetails(prevState => ({
+            setEmailDetails(prevState => ({
                 ...prevState,
-                email: value,
-                msgError: 'Email is not valid',
-                color: 'border-red'
+                input: value,
+                msgError: 'Email is not valid'
             }))
+
+            dispatch(setUser({ name, value: '' }))
 
         } else {
 
-            setDetails(prevState => ({
+            setEmailDetails(prevState => ({
                 ...prevState,
-                email: value,
-                msgError: '',
-                color: 'border-green'
+                input: value,
+                msgError: ''
             }))
 
-            props.handleEmail(event)
+            dispatch(setUser({ name, value }))
         }
 
     }
@@ -67,18 +76,18 @@ export default function Email(props) {
                     type='email'
                     id='email'
                     name="email"
-                    value={details.email}
+                    value={emailDetails.input}
                     onChange={handleChange}
                     className='form_field_input'
                 />
                 { 
-                    details.msgError ? 
+                    emailDetails.msgError ? 
                     <CheckIcon check={false} /> : 
-                    details.email.length > 0 && <CheckIcon check={true} /> 
+                    emailDetails.input.length > 0 && <CheckIcon check={true} /> 
                 }
             </div>
             {   
-                details.msgError && <ShowError msgError={details.msgError} />
+                emailDetails.msgError && <ShowError msgError={emailDetails.msgError} />
             }
         </div>
     )
