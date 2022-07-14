@@ -1,4 +1,4 @@
-<center><img src="/img/survey.png" alt="Survey" width="100px" heigth="100px" /></center>
+<center><img src="./src/img/survey.png" alt="Survey" width="100px" heigth="100px" /><center>
 
 # Form - React.js
 
@@ -10,20 +10,15 @@ This app shows a form with 8 input fields(4 required).It evauates each required 
 
 | Languages  | Libraries |
 | ------------------------------ | ------------------------------ |
-| <img src="/img/javascript.png" alt="JavaScript" width="70px" heigth="70px" />  | <img src="/img/react.png" alt="React" width="70px" heigth="70px" />  |
-| <img src="/img/html.png" alt="Html5" width="70px" heigth="70px" />  | <img src="/img/redux.png" alt="Redux" width="70px" heigth="70px" />  |
-| <img src="/img/css.png" alt="Css" width="70px" heigth="70px" />  | <img src="/img/sass.png" alt="Sass" width="70px" heigth="70px" />  |
+| <img src="./src/img/javascript.png" alt="JavaScript" width="70px" heigth="70px" />  | <img src="./src/img/react.png" alt="React" width="70px" heigth="70px" />  |
+| <img src="./src/img/html.png" alt="Html5" width="70px" heigth="70px" />  | <img src="./src/img/redux.png" alt="Redux" width="70px" heigth="70px" />  |
+| <img src="./src/img/css.png" alt="Css" width="70px" heigth="70px" />  | <img src="./src/img/sass.png" alt="Sass" width="70px" heigth="70px" />  |
 
 
-### Flow chart
+### Screenshoots of the app
 
-```flow
-st=>start: Login
-op=>operation: Login operation
-cond=>condition: Successful Yes or No?
-e=>end: User data
+<center><img src="./src/img/form.png" alt="Form" /><center>
 
-st->op->cond
-cond(yes)->e
-cond(no)->op
-```
+<center><img src="./src/img/survey.png" alt="Survey" /><center>
+
+<center><img src="./src/img/survey.png" alt="Survey" /><center>
