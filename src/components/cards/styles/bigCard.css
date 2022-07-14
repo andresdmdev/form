@@ -81,7 +81,7 @@
 
 @media screen and (max-width: 950px) and (min-width: 200px) {
   .card_big {
-    width: 320px;
+    width: 360px;
     height: 730px;
   }
   .card_big_title {
@@ -96,7 +96,7 @@
   .card_big_value-address {
     line-height: 24px;
   }
-  .card_big_btn {
+  .btn_card_big {
     left: 75px;
     right: 75px;
   }

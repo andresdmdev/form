@@ -15,7 +15,7 @@ export default function SmallCard(){
   }
 
   return (
-    <div className="card_small">
+    <div className="card_small" id="smallCard">
       <div className="card_small_info">
         <h2 className="card_small_greeting">Hello 🎉</h2>
         <h3 className="card_small_name">{firstName} {lastName}</h3>

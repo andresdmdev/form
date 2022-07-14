@@ -49,7 +49,7 @@ export default function Form(){
             <Gender />
             <Occupation />
             <Address />
-            <button className='form_btn' disabled={validation} >Sign up</button>
+            <button className='form_btn' disabled={validation}>Sign up</button>
         </form>
     )
 }

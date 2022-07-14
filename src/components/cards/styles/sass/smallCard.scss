@@ -1,4 +1,4 @@
-@import '../../../styles/sass/globalVars';
+@import '../../../styles/scss/globalVars';
 
 .card_small{
   position: relative;
@@ -75,7 +75,7 @@
 @media screen and (max-width: 950px) and (min-width: 200px) {
 
   .card_small{
-    width: 372px - 52px;
+    width: 372px - 12px;
   }
   
   .card_small_info{

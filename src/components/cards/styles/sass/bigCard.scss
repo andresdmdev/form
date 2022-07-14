@@ -1,4 +1,4 @@
-@import '../../../styles/sass/globalVars';
+@import '../../../styles/scss/globalVars';
 
 .card_big{
   position: relative;
@@ -88,7 +88,7 @@
   // Card big - user data
 
   .card_big{
-    width: 372px - 52px;
+    width: 372px - 12px;
     height: 730px;
   }
 
@@ -107,7 +107,7 @@
     line-height: 24px;
   }
 
-  .card_big_btn{
+  .btn_card_big{
     left: 102px - 27px;
     right: 102px - 27px;
   }
