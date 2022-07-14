@@ -1,9 +1,9 @@
-<div style="text-align:center">
+<div style="text-align:center; margin: 0 auto">
   <img src="./src/img/survey.png" alt="Survey" width="100px" heigth="100px" />
 </div>
 
 
-<div style="text-align:center">
+<div style="text-align:center; margin: 0 auto">
 
 # Form - React.js
 </div>
@@ -12,7 +12,7 @@
 
 This app shows a form with 8 input fields(4 required).It evauates each required input field,if all are correct it shows a green border in other cases are red,with a corresponding issue message.Finally,it shows an small card with a greeting and a button to show the data submitted in a big card.I used arrow functions, ternary operators, RegExp, validations and render props to share and validate value props between components.
 
-<div style="text-align:center">
+<div style="text-align:center; margin: 0 auto">
 
 ### Stack used for this project
 
@@ -25,7 +25,7 @@ This app shows a form with 8 input fields(4 required).It evauates each required 
 
 ### Screenshoots of the app
 
-<div style="text-align:center">
+<div style="text-align:center, margin: 0 auto">
 
 <center><img src="./src/img/form.png" alt="Form" /><center>
 
