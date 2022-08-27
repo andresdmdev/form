@@ -43,6 +43,10 @@
   outline: none;
 }
 
+.form_field_input:focus{
+  border: solid 2px $color-input-text;
+}
+
 .form_field_icon{
   position: absolute;
   box-sizing: border-box;

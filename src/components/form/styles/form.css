@@ -1,59 +1,9 @@
-.form {
-  width: 100%;
-  margin: 2rem;
-}
 
-.form_title {
-  text-align: center;
-  font-weight: 700;
-  font-size: 2rem;
-  margin: 0 0 40px;
-}
 
-.form_field {
-  width: 100%;
-  margin: 0px 0px 20px 0px;
-}
 
-.form_field_label {
-  margin: 0px 0px 0px 17px;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 24px;
-}
 
-.form_field_input {
-  position: relative;
-  width: 334px;
-  height: 34px;
-  font-family: "Poppins", sans-serif;
-  background: #EBEBEB;
-  color: rgba(31, 43, 86, 0.89);
-  border-radius: 50px;
-  border: none;
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 24px;
-  text-indent: 1.1rem;
-  margin: 5px 0 0 0;
-  cursor: pointer;
-  outline: none;
-}
 
-.form_field_icon {
-  position: absolute;
-  box-sizing: border-box;
-  margin: 15px 0px 10px -34px;
-  width: 20px;
-  height: 15px;
-}
 
-.form_field_errorMsg {
-  color: #EE5E5E;
-  width: 280px;
-  font-size: 0.75rem;
-  margin: 3px auto;
-}
 
 .form_field_fieldset {
   border: none;
@@ -82,16 +32,6 @@
   cursor: pointer;
   height: 15px;
   width: 15px;
-}
-
-.form_field select::-ms-expand {
-  display: none;
-}
-
-.form_field select:hover {
-  background-color: rgba(123, 155, 224, 0.7960784314);
-  color: #F5F5F5;
-  font-weight: 700;
 }
 
 .form_field_select {
@@ -152,59 +92,18 @@
   font-size: 0.75rem;
 }
 
-.form_btn {
-  width: 169px;
-  height: 42px;
-  border: none;
-  border-radius: 30px;
-  background-color: #1F2B56;
+.form_field select:hover {
+  background-color: rgba(123, 155, 224, 0.7960784314);
   color: #F5F5F5;
   font-weight: 700;
-  font-size: 1.125rem;
-  font-family: "Poppins", sans-serif;
-  line-height: 27px;
-  display: block;
-  margin: 0 auto;
-  cursor: pointer;
-  outline: none;
 }
 
-.form_btn:disabled {
-  opacity: 65%;
-  cursor: not-allowed;
-}
-
-.form_btn:hover {
-  background-color: #F5F5F5;
-  color: #1F2B56;
-  border: 2px solid #1F2B56;
-}
 
 @media screen and (max-width: 950px) and (min-width: 200px) {
-  .form {
-    width: 100%;
-    margin: 2rem 2rem 2rem 1.7rem;
-  }
-  .form_field {
-    margin: 0px 0px 10px 0px;
-  }
-  .form_field_label {
-    margin: 0px 0px 0px 13px;
-    line-height: 20px;
-  }
-  .form_field_input {
-    width: 100%;
-    line-height: 20px;
-    text-indent: 1.1rem;
-  }
-  .form_field_icon {
-    margin: -26px 0px 10px 275px;
-  }
-  .form_field_errorMsg {
-    width: 90%;
-    font-size: 0.75rem;
-    margin: 3px 10px;
-  }
+  
+ 
+
+ 
   .form_field_fieldset_label {
     margin-right: 0.6rem;
   }
