@@ -20,10 +20,12 @@ export default function FirstName({ register, handleErrors }){
             <div className="relative">
                 <input 
                     type='text'
+                    id="firstName"
+                    name="firstName"
                     className={`w-full indent-4 sm:w-80 h-10 bg-input text-base
-                    sm:indent-4 mt-1 cursor-pointer outline-0 text-input-text rounded-3xl focus:border-2
-                    focus:border-r-input-border focus:border-solid hover:border-solid hover:border-r-input-border 
-                    hover:border-2 transition-all duration-100`}
+                        sm:indent-4 mt-1 cursor-pointer outline-0 text-input-text rounded-3xl focus:border-2
+                        focus:border-r-input-border focus:border-solid hover:border-solid hover:border-r-input-border 
+                        hover:border-2 transition-all duration-100`}
                     {...register('firstName', {
                         required: 'Input your first name.',
                         minLength: {
