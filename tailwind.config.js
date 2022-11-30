@@ -22,11 +22,19 @@ module.exports = {
       'white': '#F5F5F5',
       'black': '#1F2B56',
       'input': '#EBEBEB',
+      'smallBtn': '#ffd54f',
+      'smallBtn2': '#ff8a65',
       'input-text': 'rgba(31, 43, 86, 0.89)',
       'input-border': 'rgba(31, 43, 86, 0.89)',
       'error': '#EE5E5E'
     },
-    extend: {},
+    extend: {
+      inset: {
+        '1/5': '20%',
+        '1/6': '16.666%',
+        '1/10': '10%',
+      }
+    },
   },
   plugins: [],
 }
