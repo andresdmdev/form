@@ -1,43 +1,30 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../../store/slices/userSlice";
+import React from 'react'
 
-export default function Gender(){
-
-  const { gender } = useSelector(state => state.userSlice)
-
-  const dispatch = useDispatch()
-  
-  function handleGender(event){
-
-    const { name, value } = event.target
-
-    dispatch(setUser({ name, value }))
-  }
+export default function Gender({ register }){
 
   const genders = ['Male', 'Female', 'Other']
 
   const allGender = genders.map(elem => (
-    <div key={elem} className='form_field_fieldset_radio'>
+    <div key={elem} className="ml-4">
         <input 
           type="radio" 
-          checked={gender === elem} 
           value={elem}
           name="gender"
           id={elem}
-          onChange={handleGender}
-          className="form_field_fieldset_radio-check" 
+          className="cursor-pointer hidden peer" 
+          {...register('gender')}
         />
-        <i></i>
-        <label htmlFor={elem} className="form_field_fieldset_label">{elem}</label>
+        <label htmlFor={elem} className="py-1.5 px-3.5 font-medium peer-checked:text-50 bg-100 text-base cursor-pointer rounded-2xl peer-checked:bg-400 transition hover:ring-2 hover:ring-400">{elem}</label>
     </div>
   ))
 
   return (
-    <div className="form_field">
-      <fieldset className="form_field_fieldset">
-        <legend className="form_field_fieldset_title">Gender</legend>
-        {allGender}
+    <div>
+      <fieldset>
+        <legend className="ml-3 leading-5 sm:ml-4 text-base font-semibold">Gender</legend>
+        <div className="flex flex-row justify-center py-3 mt-2">
+          {allGender}
+        </div>
       </fieldset>
     </div>
   )
