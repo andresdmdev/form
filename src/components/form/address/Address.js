@@ -1,42 +1,33 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../../store/slices/userSlice";
 
-export default function Address(){
-
-  const { address } = useSelector(state => state.userSlice)
-
-  const dispatch = useDispatch()
+export default function Address({ register }){
 
   const [count, setCount] = useState(0)
 
   function handleAddress(event) {
 
-    const { name, value } = event.target
+    const { value } = event.target
 
     if (value.length <= 250) {
-
-      dispatch(setUser({ name, value }))
 
       setCount(value.length)
     } else {
       setCount(value.length - 1)
     }
-  }
+  } 
 
   return (
-    <div className="form_field">
-      <label htmlFor="address" className="form_field_label">Address</label>
+    <div className="flex flex-col">
+      <label htmlFor="address" className="ml-3 leading-5 sm:ml-4 text-base font-semibold">Address</label>
       <textarea 
-        name="address" 
+        data-testid="address" 
         id="address"
-        value={address}
+        {...register('address')}
         onChange={handleAddress}
-        placeholder='Address here...'
-        className="form_field_textarea"
+        className="rounded-xl px-2.5 py-2 my-2 text-sm text-900 bg-input cursor-pointer h-32"
       />
-      <p className="form_field_counter">{count}/250</p>
+      <p className="text-xs flex justify-end mr-2">{count}/250</p>
     </div>
   )
 }
