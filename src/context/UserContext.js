@@ -7,10 +7,8 @@ export function UserContext({ children }){
 
   const [userData, setUserData] = useState({})
 
-  const [showCard, setShowCard] = useState({})
-
   return (
-    <Context.Provider value={{ userData, setUserData, showCard, setShowCard }}>
+    <Context.Provider value={{ userData, setUserData }}>
       {children}
     </Context.Provider>
   )

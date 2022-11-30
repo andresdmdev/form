@@ -7,7 +7,8 @@ export default function CheckIcon({ check }){
   return(
       <img 
         src={check ? doneIcon : errorIcon} 
-        alt='Icon' 
+        alt='Icon'
+        data-testid='checkIcon'
         className={`absolute w-52 h-4 box-border top-4 left-48`} 
       />
   );
