@@ -15,7 +15,7 @@ This app shows a form with 8 input fields and 4 are required. It evaluate each r
 | ------ | ------ |
 | <img src="https://res.cloudinary.com/dp3chx1yj/image/upload/v1664324592/General%20data/javascript_kmrtc6.png" alt="JavaScript" width="70px" heigth="70px" />  | <img src="https://res.cloudinary.com/dp3chx1yj/image/upload/v1664324592/General%20data/react_cb0nfb.png" alt="React" width="70px" heigth="70px" />  |
 | <img src="https://res.cloudinary.com/dp3chx1yj/image/upload/v1664324592/General%20data/html_pfowyr.png" alt="Html5" width="70px" heigth="70px" />  | <img src="https://res.cloudinary.com/dp3chx1yj/image/upload/v1664324592/General%20data/tailwind_l6eodf.png" alt="Redux" width="70px" heigth="70px" />  |
-| <img src="./src/img/css.png" alt="Css" width="70px" heigth="70px" />  | <img src="https://res.cloudinary.com/dp3chx1yj/image/upload/v1670086767/General%20data/react-testing-library_lntylq.png" alt="Sass" width="70px" heigth="70px" />  |
+| <img src="[./src/img/css.png](https://res.cloudinary.com/dp3chx1yj/image/upload/v1664324592/General%20data/css_ol2bj6.png)" alt="Css" width="70px" heigth="70px" />  | <img src="https://res.cloudinary.com/dp3chx1yj/image/upload/v1670086767/General%20data/react-testing-library_lntylq.png" alt="Sass" width="70px" heigth="70px" />  |
 
 
 ### Screenshoots of the app
