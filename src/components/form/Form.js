@@ -1,6 +1,5 @@
 import React from 'react';
-/* import './styles/form.css'
- */import ConfirmPassword from './password/ConfirmPassword';
+import ConfirmPassword from './password/ConfirmPassword';
 import Email from './email/Email';
 import Password from './password/Password';
 import FirstName from './name/FirstName';
@@ -8,55 +7,10 @@ import LastName from './name/LastName';
 import Gender from './gender/Gender';
 import Occupation from './occupation/Ocuppation';
 import Address from './address/Address';
-/* import { setCard } from '../store/slices/cardSlice'; */
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import UserContext from '../../context/UserContext';
 import { useCallback } from 'react';
-
-/* export default function Form(){
-
-    const {
-        firstName,
-        lastName,
-        email,
-        password,
-        confirmPassword
-    } = useSelector(state => state.userSlice)
-
-    const dispatchCard = useDispatch()
-
-    const validation = (
-        password !== confirmPassword ||
-        firstName === '' ||
-        lastName === '' ||
-        email === '' ||
-        password === '' ||
-        confirmPassword === ''
-    )
-    
-    function handleSubmit(event){
-        event.preventDefault()
-
-        dispatchCard(setCard({ name: 'smallCard', value: true }))
-    }
-
-    return (
-        <form onSubmit={handleSubmit} className='form'>
-            <h1 className='form_title'>Sign up</h1>
-            <FirstName />
-            <LastName />
-            <Email />
-            <Password />
-            <ConfirmPassword />
-            <Gender />
-            <Occupation />
-            <Address />
-            <button className='form_btn' disabled={validation}>Sign up</button>
-        </form>
-    )
-} */
-
 
 export default function Form({ showCard }){
 

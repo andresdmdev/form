@@ -58,13 +58,13 @@ describe('Testing Card Component', () => {
         expect(fullNameElement).toBeInTheDocument()
         expect(emailCardElement).toBeInTheDocument()
 
-        const btnCardElements = await screen.findAllByRole('button')
+        const btnCardElement = await screen.findByTestId('confirmBtn')
 
-        userEvent.click(btnCardElements[0])
+        userEvent.click(btnCardElement)
 
-        const smallCardElementAgain = await screen.findByTestId('smallCard')
+        const smallCardElementAgain = screen.queryByTestId('smallCard')
 
-        expect(smallCardElementAgain).toBeInTheDocument()
+        expect(smallCardElementAgain).not.toBeInTheDocument()
 
     })
 
@@ -84,13 +84,13 @@ describe('Testing Card Component', () => {
         expect(fullNameElement).toBeInTheDocument()
         expect(emailCardElement).toBeInTheDocument()
 
-        const btnCardElements = await screen.findAllByRole('button')
+        const btnCardElement = await screen.findByTestId('confirmBtn')
 
-        userEvent.click(btnCardElements[0])
+        userEvent.click(btnCardElement)
 
-        const smallCardElementAgain = await screen.findByTestId('smallCard')
+        const smallCardElementAgain = screen.queryByTestId('smallCard')
 
-        expect(smallCardElementAgain).toBeInTheDocument()
+        expect(smallCardElementAgain).not.toBeInTheDocument()
 
     })
 })
