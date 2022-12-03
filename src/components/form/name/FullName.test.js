@@ -3,49 +3,60 @@ import '@testing-library/jest-dom'
 import userEvent from "@testing-library/user-event";
 import App from '../../App'
 
+beforeEach(() => {
+    render(<App />)
+})
+
+const inputElement = (name, text) => {
+    const nameElement = screen.getByRole('textbox', {
+        name: name
+    })
+
+    userEvent.type(nameElement, text)
+    expect(nameElement).toHaveValue(text)
+}
+
+const iconElement = (id) => {
+    const icon = screen.queryByTestId(id)
+
+    return {icon}
+}
+
+const msgElement = (text) => {
+    const msg = screen.queryByText(text)
+
+    return {msg}
+}
+
 describe('should render firstName component', () => {
     test('should input at least three letters for the first name', () => {
 
-        render(<App />)
+        inputElement(/first name/i, 'William')
 
-        const firstNameElement = screen.getByRole('textbox', {
-            name: /first name/i
-        })
+        const { icon:errorIcon } = iconElement('errorIcon')
 
-        const doneIcon = screen.queryByTestId('checkIcon')
+        expect(errorIcon).not.toBeInTheDocument()
 
-        expect(doneIcon).not.toBeInTheDocument()
+        const { icon } = iconElement('checkIcon')
 
-        userEvent.type(firstNameElement, 'William')
+        expect(icon).toBeInTheDocument()
 
-        expect(firstNameElement.value).toBe('William')
+        const { msg } = msgElement(/first name must be between 3 and 25 characters/i)
 
-        const errorIconAgain = screen.getByTestId('checkIcon')
-
-        expect(errorIconAgain).toBeInTheDocument()
-
-        const errorMsg = screen.queryByText(/first name must be between 3 and 25 characters/i)
-
-        expect(errorMsg).not.toBeInTheDocument()
+        expect(msg).not.toBeInTheDocument()
     })
 
     test('should show an error if the input dont have more than three letters', async () => {
 
-        render(<App />)
+        inputElement(/first name/i, 'Wi')
 
-        const firstNameElement = screen.getByRole('textbox', {
-            name: /first name/i
-        })
+        const { icon:errorIcon } = iconElement('errorIcon')
 
-        const errorIcon = screen.queryByTestId('checkIcon')
+        expect(errorIcon).toBeInTheDocument()
 
-        expect(errorIcon).not.toBeInTheDocument()
+        const { icon } = iconElement('checkIcon')
 
-        userEvent.type(firstNameElement, 'Wi')
-
-        const errorIconAgain = screen.getByTestId('checkIcon')
-
-        expect(errorIconAgain).toBeInTheDocument()
+        expect(icon).not.toBeInTheDocument()
 
         const submitBtn = screen.getByRole('button')
 
@@ -58,13 +69,7 @@ describe('should render firstName component', () => {
 
     test('should show an error if the input dont have any letter', async () => {
 
-        render(<App />)
-
-        const firstNameElement = screen.getByRole('textbox', {
-            name: /first name/i
-        })
-
-        expect(firstNameElement.value).toBe('')
+        inputElement(/first name/i, '')
 
         const submitBtn = screen.getByRole('button')
 
@@ -79,23 +84,15 @@ describe('should render firstName component', () => {
 describe('should render lastName component', () => {
     test('should input at least three letters for the last name', () => {
 
-        render(<App />)
+        inputElement(/last name/i, 'Marquez')   
 
-        const lastNameElement = screen.getByRole('textbox', {
-            name: /last name/i
-        })
+        const { icon:errorIcon } = iconElement('errorIcon')
 
-        const doneIcon = screen.queryByTestId('checkIcon')
+        expect(errorIcon).not.toBeInTheDocument()
 
-        expect(doneIcon).not.toBeInTheDocument()
+        const { icon } = iconElement('checkIcon')
 
-        userEvent.type(lastNameElement, 'Marquez')
-
-        expect(lastNameElement.value).toBe('Marquez')
-
-        const errorIconAgain = screen.getByTestId('checkIcon')
-
-        expect(errorIconAgain).toBeInTheDocument()
+        expect(icon).toBeInTheDocument()
 
         const errorMsg = screen.queryByText(/last name must be between 3 and 25 characters/i)
 
@@ -104,21 +101,15 @@ describe('should render lastName component', () => {
 
     test('should show an error if the input dont have more than three letters', async () => {
 
-        render(<App />)
+        inputElement(/last name/i, 'Ma')   
 
-        const lastNameElement = screen.getByRole('textbox', {
-            name: /last name/i
-        })
+        const { icon:errorIcon } = iconElement('errorIcon')
 
-        const errorIcon = screen.queryByTestId('checkIcon')
+        expect(errorIcon).toBeInTheDocument()
 
-        expect(errorIcon).not.toBeInTheDocument()
+        const { icon } = iconElement('checkIcon')
 
-        userEvent.type(lastNameElement, 'Ma')
-
-        const errorIconAgain = screen.getByTestId('checkIcon')
-
-        expect(errorIconAgain).toBeInTheDocument()
+        expect(icon).not.toBeInTheDocument()
 
         const submitBtn = screen.getByRole('button')
 
@@ -131,13 +122,7 @@ describe('should render lastName component', () => {
 
     test('should show an error if the input dont have any letter', async () => {
 
-        render(<App />)
-
-        const lastNameElement = screen.getByRole('textbox', {
-            name: /last name/i
-        })
-
-        expect(lastNameElement.value).toBe('')
+        iconElement(/last name/i, '')
 
         const submitBtn = screen.getByRole('button')
 

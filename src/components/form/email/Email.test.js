@@ -21,10 +21,10 @@ const emailElement = (text) => {
     }
 }
 
-const iconElementNotVisible = () => {
-    const checkIcon = screen.queryByTestId('checkIcon')
+const iconElement = (id) => {
+    const icon = screen.queryByTestId(id)
 
-    expect(checkIcon).not.toBeInTheDocument()
+    return {icon}
 }
 
 beforeEach(() => {
@@ -34,13 +34,15 @@ beforeEach(() => {
 describe('should render email component', () => {
     test('should input a correct email', () => {
 
-        iconElementNotVisible()
-
         emailElement('andresdmf55@gmail.com')
 
-        const doneIconAgain = screen.getByTestId('checkIcon')
+        const {icon} = iconElement('checkIcon')
 
-        expect(doneIconAgain).toBeInTheDocument()
+        expect(icon).toBeInTheDocument()
+
+        const {icon:errorIcon} = iconElement('errorIcon')
+
+        expect(errorIcon).not.toBeInTheDocument()
 
         const submitBtn = screen.getByRole('button')
 
@@ -49,13 +51,15 @@ describe('should render email component', () => {
 
     it('should show an error if the input dont have email format', async () => {
 
-        iconElementNotVisible()
+        emailElement('andresdmf55gmail.com')
 
-        emailElement('andresmf55gmail.com')
+        const {icon} = iconElement('checkIcon')
 
-        const doneIconAgain = screen.getByTestId('checkIcon')
+        expect(icon).not.toBeInTheDocument()
 
-        expect(doneIconAgain).toBeInTheDocument()
+        const {icon:errorIcon} = iconElement('errorIcon')
+
+        expect(errorIcon).toBeInTheDocument()
 
         const submitBtn = screen.getByRole('button')
 

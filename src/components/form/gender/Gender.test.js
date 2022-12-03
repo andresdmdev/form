@@ -11,7 +11,7 @@ const optionElementsFn = (selected, total) => {
 
     const optionGenderElements = screen.getAllByRole('radio')
 
-    expect(optionGenderElements.length).toBe(total)
+    expect(optionGenderElements).toHaveLength(total)
 
     userEvent.click(optionGenderElements[selected])
 

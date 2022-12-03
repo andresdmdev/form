@@ -19,6 +19,12 @@ const errorMsg = async (text) => {
     expect(errorMsg).toBeInTheDocument()
 }
 
+const iconElement = (id) => {
+    const icon = screen.queryByTestId(id)
+
+    return {icon}
+}
+
 beforeEach(() => {
     render(<App />)
 })
@@ -30,16 +36,16 @@ describe('Testing password component', () => {
         
         passwordElement('password','Wm12345A$')
 
-        const doneIcon = screen.getByTestId('checkIcon')
+        const {icon} = iconElement('checkIcon')
 
-        expect(doneIcon).toBeInTheDocument()
+        expect(icon).toBeInTheDocument()
     })
 
     test('Should show an error if the password in not correct', async () => {
 
         passwordElement('password','Wm12$78')
 
-        const errorIcon = screen.getByTestId('checkIcon')
+        const {icon:errorIcon} = iconElement('errorIcon')
 
         expect(errorIcon).toBeInTheDocument()
 
@@ -47,18 +53,12 @@ describe('Testing password component', () => {
 
         userEvent.click(submitBtn)
 
-        expect(errorIcon).toBeInTheDocument()
-
         errorMsg(/Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in/i)
     })
 
     test('Should show an error if the password do not submited', async () => {
 
         passwordElement('password','')
-
-        const errorIcon = screen.queryByTestId('checkIcon')
-
-        expect(errorIcon).not.toBeInTheDocument()
 
         const submitBtn = screen.getByRole('button')
 
@@ -76,13 +76,11 @@ describe('Testing confirm password component', () => {
 
         const { value: confirmPassword } = passwordElement('confirmPassword', 'Wm12345A$')
 
-        const samePassword = password === confirmPassword
-
-        expect(samePassword).toBeTruthy()
+        expect(password === confirmPassword).toBeTruthy()
 
         const doneIcon = screen.getAllByTestId('checkIcon')
 
-        expect(doneIcon.length).toBe(2)
+        expect(doneIcon).toHaveLength(2)
     })
 
     test('Should show an error if passwords do not match', async () => {
@@ -91,13 +89,13 @@ describe('Testing confirm password component', () => {
 
         const { value: confirmPassword } = passwordElement('confirmPassword', 'Wm12345A')
 
-        const samePassword = password === confirmPassword
+        expect(password === confirmPassword).toBeFalsy()
 
-        expect(samePassword).toBeFalsy()
+        const {icon} = iconElement('checkIcon')
+        const {icon:errorIcon} = iconElement('errorIcon')
 
-        const doneIcon = screen.getAllByTestId('checkIcon')
-
-        expect(doneIcon.length).toBe(2)
+        expect(icon).toBeInTheDocument()
+        expect(errorIcon).toBeInTheDocument()
 
         const submitBtn = screen.getByRole('button')
 
@@ -112,13 +110,11 @@ describe('Testing confirm password component', () => {
 
         const { value: confirmPassword } = passwordElement('confirmPassword', '')
 
-        const samePassword = password === confirmPassword
+        expect(password === confirmPassword).toBeFalsy()
 
-        expect(samePassword).toBeFalsy()
+        const {icon} = iconElement('checkIcon')
 
-        const doneIcon = screen.getAllByTestId('checkIcon')
-
-        expect(doneIcon.length).toBe(1)
+        expect(icon).toBeInTheDocument()
 
         const submitBtn = screen.getByRole('button')
 
