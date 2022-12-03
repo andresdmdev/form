@@ -1,4 +1,5 @@
 import React from "react";
+import { HiSelector } from "react-icons/hi";
 
 export default function Occupation({ register }){
 
@@ -23,7 +24,7 @@ export default function Occupation({ register }){
   ))
 
   return (
-    <div className="my-4 flex flex-col">
+    <div className="my-4 flex flex-col relative">
       <label htmlFor="occupation" className="ml-3 leading-5 sm:ml-4 text-base font-semibold">Occupation</label>
       <select 
         id="occupation" 
@@ -33,6 +34,7 @@ export default function Occupation({ register }){
         <option value='Choose one'>Choose one</option>
         {allOccupations}
       </select>
+      <HiSelector className="absolute right-3 top-10.5 text-900 text-xl" />
     </div>
   )
 } 
